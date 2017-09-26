@@ -1,1 +1,49 @@
-<h1>Hello World</h1>
+<html>
+<head>
+  <script>
+    // Check for the various File API support.
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
+      // Great success! All the File APIs are supported.
+    } else {
+      alert('The File APIs are not fully supported in this browser.');
+    }
+    function buildJson(){
+      user = document.getElementById('u1').value
+      password = document.getElementById('p1').value
+      if(user == "" || password == ""){
+        alert("please fill in all fields")
+        return false;
+      }
+      var myObj = { "user":user, "password": password};
+      var myJSON = JSON.stringify(myObj);
+      window.location = "?" + myJSON;
+      jsonParse()
+    }
+    function jsonParse() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              var myObj = JSON.parse(this.responseText);
+              var output = myObj.name + "<br>" + myObj.username + "<br>" + myObj.age
+              document.getElementById("json").innerHTML = output;
+          }
+      };
+      xmlhttp.open("GET", "json_demo.txt", true);
+      xmlhttp.send();
+    }
+  </script>
+</head>
+<body>
+  <form action="#" method="get" onsubmit="return buildJson()" >
+    Username:<br>
+    <input type="text" name="u1" id="u1"><br />
+    Password:<br>
+    <input type="password" name="p1" id="p1"><br />
+    <input type="submit" value="submit">
+  </form>
+  <br />
+  <br />
+  <h3>Json Text File</h3>
+  <div id="json"></div>
+</body>
+</html>
