@@ -1,0 +1,49 @@
+<html>
+<head>
+  <title>Ajax Request</title>
+  <link rel="stylesheet" href="css/main.css">
+  <script>
+    function validate(){
+      var fileName = document.getElementById("json")
+    }
+    function jsonParse() {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              var myObj = JSON.parse(this.responseText);
+              var output = myObj.name + "<br>" + myObj.username + "<br>" + myObj.age
+              document.getElementById("json").innerHTML = output;
+          }
+      };
+      xmlhttp.open("GET", fileName, true);
+      xmlhttp.send();
+    }
+  </script>
+</head>
+<body>
+  <div id="sidebar" class="sidenav">
+    <a href="index.html">Home</a>
+    <a href="jsonparse.html">JSONParse/Stringify</a>
+    <a href="ajax_request.html">AjaxRequesting</a>
+    <a href="css3_transition.html">CSS3 Transitions</a>
+    <a href="css3_transform.html">CSS3 Transforms</a>
+    <a href="css3_animations.html">CSS3 Animations</a>
+  </div>
+  <div id="ajax_request">
+    <h1>Ajax Requesting</h1>
+    <p>The "grab info" button will grab the json file and load it to the webpage<br/>
+      without refreashing this webpage by using ajax request to complete the task.</p>
+    <p>Please select a JSON file to Load</p>
+    <form action="#" method="get" onsubmit="return buildJson()" >
+      <input type="radio" value="class.json" name="json"> Class List<br>
+      <input type="radio" value="employees.json" name="json"> Employee List<br>
+      <input type="radio" value="orders.json" name="json"> Orders<br>
+      <input type="submit" value="Load" id="submitbutton">
+    </form>
+    <br />
+    <br />
+    <p id="file title"></p>
+    <div id="json"></div>
+  </div>
+</body>
+</html>

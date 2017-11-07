@@ -1,0 +1,94 @@
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 300px; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: margin 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover {
+    background-color: #DCA600;
+    color: black;
+}
+
+#homepage {
+    margin-left: 300px;
+    padding: 20px;
+}
+
+#ajax_request {
+    margin-left: 300px;
+    padding: 20px;
+}
+#ajax_request #submitbutton {
+  background-color: #DCA600;
+  margin-top: 10px;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+/*
+CSS3 Transition
+Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
+*/
+.c3transition {
+  margin-left: 300px;
+  padding: 20px;
+}
+.c3transition #box {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  background-color: red;
+  -webkit-transition: background-color 2s, width 1s, height 1s, margin 2s;
+  transition: background-color 2s, width 1s, height 1s, margin 2s;
+}
+
+.c3transition #box:hover {
+  background-color: blue;
+  width: 400px;
+  height: 500px;
+}
+
+.c3transition input:focus {
+	background-color: yellow;
+    transition: background-color 1s;
+}
+
+
+/*
+CSS3 Transform Page
+Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
+*/
+.c3transform {
+  margin-left: 300px;
+  padding: 20px;
+}
+.c3transform #box {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  background-color: red;
+}
+
+.c3transform #box:hover {
+  background-color: blue;
+  width: 400px;
+  height: 500px;
+}
+
+.c3transform input:focus {
+	background-color: yellow;
+}

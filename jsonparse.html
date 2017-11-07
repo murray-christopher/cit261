@@ -1,0 +1,12 @@
+function buildJson(){
+  user = document.getElementById('u1').value
+  password = document.getElementById('p1').value
+  if(user == "" || password == ""){
+    alert("please fill in all fields")
+    return false;
+  }
+  var myObj = { "user":user, "password": password};
+  var myJSON = JSON.stringify(myObj);
+  window.location = "?" + myJSON;
+  jsonParse()
+}
