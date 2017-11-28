@@ -24,29 +24,25 @@
     color: black;
 }
 
-#homepage {
+.pagecontent {
     margin-left: 300px;
     padding: 20px;
 }
 
-#ajax_request {
-    margin-left: 300px;
-    padding: 20px;
-}
-#ajax_request #submitbutton {
+/*
+AJAX Request
+*/
+.ajax_request #submitbutton {
   background-color: #DCA600;
   margin-top: 10px;
   padding: 10px 25px;
   border-radius: 10px;
 }
+
 /*
 CSS3 Transition
 Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 */
-.c3transition {
-  margin-left: 300px;
-  padding: 20px;
-}
 .c3transition #box {
   width: 100px;
   height: 100px;
@@ -72,10 +68,6 @@ Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 CSS3 Transform Page
 Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 */
-.c3transform {
-  margin-left: 300px;
-  padding: 20px;
-}
 .c3transform #box {
   width: 100px;
   height: 100px;

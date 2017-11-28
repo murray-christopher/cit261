@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>Ajax Request</title>
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="../main.css">
   <script>
     function validate(){
       var fileName = document.getElementById("json")
@@ -22,14 +22,22 @@
 </head>
 <body>
   <div id="sidebar" class="sidenav">
-    <a href="index.html">Home</a>
+    <a href="../index.html">Home</a>
     <a href="jsonparse.html">JSONParse/Stringify</a>
     <a href="ajax_request.html">AjaxRequesting</a>
     <a href="css3_transition.html">CSS3 Transitions</a>
     <a href="css3_transform.html">CSS3 Transforms</a>
     <a href="css3_animations.html">CSS3 Animations</a>
+    <a href="htmltags.html">HTML 5 Tags</a>
+    <a href="jsevents.html">JS Events</a>
+    <a href="jstriggeranim.html">JS Triggered Animations</a>
+    <a href="jsbasics.html">JS Basics</a>
+    <a href="jsobjects.html">JS Objects</a>
+    <a href="localstorage.html">Local Storage</a>
+    <a href="dommanip.html">DOM Manipulation</a>
+    <a href="jscss.html">JS Manipulate CSS</a>
   </div>
-  <div id="ajax_request">
+  <div class="ajax_request pagecontent">
     <h1>Ajax Requesting</h1>
     <p>The "grab info" button will grab the json file and load it to the webpage<br/>
       without refreashing this webpage by using ajax request to complete the task.</p>
@@ -38,7 +46,7 @@
       <input type="radio" value="class.json" name="json"> Class List<br>
       <input type="radio" value="employees.json" name="json"> Employee List<br>
       <input type="radio" value="orders.json" name="json"> Orders<br>
-      <input type="submit" value="Load" id="submitbutton">
+      <input type="submit" value="Grab Info" id="submitbutton">
     </form>
     <br />
     <br />

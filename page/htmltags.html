@@ -1,0 +1,132 @@
+<html>
+<head>
+  <title>HTML Tags</title>
+  <link rel="stylesheet" href="../main.css">
+</head>
+<body>
+<div id="sidebar" class="sidenav">
+  <a href="../index.html">Home</a>
+  <a href="jsonparse.html">JSONParse/Stringify</a>
+  <a href="ajax_request.html">AjaxRequesting</a>
+  <a href="css3_transition.html">CSS3 Transitions</a>
+  <a href="css3_transform.html">CSS3 Transforms</a>
+  <a href="css3_animations.html">CSS3 Animations</a>
+  <a href="htmltags.html">HTML 5 Tags</a>
+  <a href="jsevents.html">JS Events</a>
+  <a href="jstriggeranim.html">JS Triggered Animations</a>
+  <a href="jsbasics.html">JS Basics</a>
+  <a href="jsobjects.html">JS Objects</a>
+  <a href="localstorage.html">Local Storage</a>
+  <a href="dommanip.html">DOM Manipulation</a>
+  <a href="jscss.html">JS Manipulate CSS</a>
+</div>
+<div class="htmltags, pagecontent">
+  <h1>HTML 5 Tags - Video, Audio, Canvas</h1>
+  <p> </p>
+  <h2>Video</h2>
+  <p>With the video tag you can play video files stored on your website.
+    It has various options avaialable with it such as allowing the video
+    controls to show or autoplay.</p>
+  <video width="400" controls>
+    <source src="pubg.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+  <h2>Audio</h2>
+  <p>Audio tag allows you to play audio stored on your webserver. MP3, Ogg,
+    Wav are the supported audio formats. Similiar to the video tag you can
+    show/hide controls, autoplay, loop etc..</p>
+    <audio controls>
+     <source src="horse.ogg" type="audio/ogg">
+     Your browser does not support the audio tag.
+    </audio>
+
+  <h2>Canvas</h2>
+  <p>Canvas is used to draw graphics on a webpage. It can be used statically
+    or dynamiically. You can set the canvas to refreash on a tick bases and
+    get objects to move across the canvas and allow user input and make a game.
+    It is very powerful. The canvas below bounces a ball around the frame.
+    Your mouse moves the red square anywhere your mouse is in the canvas</p>
+  <canvas id="gameCanvas" width="800" height="640"></canvas>
+</div>
+<script>
+  //Canvas Game
+  var canvas;
+  var gameWindow;
+  var p = {"x":400, "y":320};
+  var ball = {"x":400, "y":320, "r":12, "xs":4, "ys":4};
+  var game = {"speed_modifier":0.5}
+
+  const PLAYER_WIDTH = 30;
+  const PLAYER_HEIGHT = 30;
+
+  window.onload = function() {
+    var fps = 60;
+    canvas = document.getElementById('gameCanvas');
+    gameWindow = canvas.getContext('2d');
+    setInterval(function(){
+      update();
+      draw();
+    }, 1000/fps);
+
+  canvas.addEventListener('mousemove',
+    function(evt) {
+      var mousePos = calcMousePos(evt);
+      p.y = mousePos.y - (PLAYER_HEIGHT/2);
+      p.x = mousePos.x - (PLAYER_WIDTH/2);
+    });
+  }
+  function draw() {
+    gameWindow.fillStyle = 'black';
+    gameWindow.fillRect(0,0,canvas.width,canvas.height);
+    //player
+    drawPlayer(p.x, p.y, PLAYER_WIDTH, PLAYER_HEIGHT, 'red');
+    //ball
+    drawBall(ball.x, ball.y, ball.r, 'white');
+  }
+
+  function drawPlayer(x, y, w, h, color) {
+    gameWindow.fillStyle = color;
+    gameWindow.fillRect(x, y, w, h);
+  }
+
+  function update() {
+    console.log("speed: " + ball.xs);
+    ball.x += ball.xs;
+    ball.y += ball.ys;
+
+    //ball hits left side
+    if(ball.x < 0 + ball.r){
+            ball.xs = -ball.xs;
+    }
+    //ball hits right side
+    if(ball.x > canvas.width - ball.r) {
+      ball.xs = -ball.xs;
+    }
+    //ball hits bottom
+    if(ball.y > canvas.height - ball.r){
+      ball.ys = -ball.ys;
+    }
+    //ball hits top
+    if(ball.y < 0 + ball.r){
+      ball.ys = -ball.ys;
+    }
+  }
+
+  function drawBall(x, y, r, color) {
+    gameWindow.fillStyle = color;
+    gameWindow.beginPath();
+    //pos-x, pos-y, radius, start drawing radians, 2pi gives full circle, which half to display
+    gameWindow.arc(x, y, r, 0, Math.PI*2, true);
+    gameWindow.fill();
+  }
+
+  function calcMousePos(evt) {
+    var rect = canvas.getBoundingClientRect();
+    var root = document.documentElement;
+    var mouseX = evt.clientX - rect.left - root.scrollLeft;
+    var mouseY = evt.clientY - rect.top - root.scrollLeft;
+    return {x:mouseX, y:mouseY};
+  }
+</script>
+</body>
+</html>
