@@ -3,6 +3,19 @@
   <title>JS Basics</title>
   <link rel="stylesheet" href="../main.css">
   <script>
+  function forloop() {
+    var text = "";
+    for(var i = 0; i < 10; i++){
+      console.log("counting: " + i);
+      text += (i + 1) + " ";
+      document.getElementById("loops").innerHTML = text;
+    }
+  }
+  function conditional(){
+
+    document.getElementById("conditional").innerHTML = text;
+  }
+
   </script>
 </head>
 <body>
@@ -25,10 +38,15 @@
 <div class="jsbasics, pagecontent">
   <h1>Javascript Basics</h1>
   <h2>Loops</h2>
+  <div id="loops" onclick="forloop()"><input type="button" value="count to 10"></div>
   <h2>Conditionals</h2>
+  <div>Input some text or leave blank and click submit<input type="text"><input type="button" value="submit"></div>
   <h2>Functions</h2>
+  <p>click some of the buttons below to execute the functions I have under different categories</p>
   <h2>Variables</h2>
+  <p>With declared Varibles I can grab information from the client store it in a varible and Manipulate it.</p>
   <h2>Parameters</h2>
+
   <h2>Arrays</h2>
   <h2>Objects</h2>
 </div>
