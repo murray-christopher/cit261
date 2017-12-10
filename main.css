@@ -7,7 +7,6 @@
     left: 0;
     background-color: #111; /* Black*/
     padding-top: 60px; /* Place content 60px from the top */
-    transition: margin 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 .sidenav a {
@@ -16,7 +15,6 @@
     font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
 }
 
 .sidenav a:hover {
@@ -46,7 +44,6 @@ Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 .c3transition #box {
   width: 100px;
   height: 100px;
-  margin: auto;
   background-color: red;
   -webkit-transition: background-color 2s, width 1s, height 1s, margin 2s;
   transition: background-color 2s, width 1s, height 1s, margin 2s;
@@ -71,7 +68,6 @@ Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 .c3transform #box {
   width: 100px;
   height: 100px;
-  margin: auto;
   background-color: red;
 }
 
@@ -83,4 +79,65 @@ Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
 
 .c3transform input:focus {
 	background-color: yellow;
+}
+
+/*
+CSS3 animation Page
+Designing, Defining, and Triggering CSS3 Transitions without Custom Libraries
+*/
+.c3animations #box {
+  width: 200px;
+  height: 200px;
+  background-color: red;
+  -webkit-transition: width 1s ease, height 1s ease;
+  -moz-transition: width 1s ease, height 1s ease;
+  -o-transition: width 1s ease, height 1s ease;
+  -ms-transition: width 1s ease, height 1s ease;
+  transition: width 1s ease, height 1s ease;
+}
+
+.c3animations #box:active {
+  background-color: blue;
+  width: 500px;
+  height: 500px;
+}
+
+.c3animations input:focus {
+	background-color: yellow;
+}
+
+
+
+/*
+JS triggered events using css
+*/
+
+.jstriggeranim #thebox {
+  margin: 25px;
+  width: 550px;
+  height: 100px;
+  background: #41B3A3;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
+}
+
+.jstriggeranim #mobilebox {
+  margin: 25px;
+  width: 10%;
+  height: 100px;
+  background: #41B3A3;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
+}
+/* Chrome, Safari, Opera */
+@-webkit-keyframes movebox {
+  from {top: 0px;}
+  to {top: 300px;}
+}
+
+@keyframes movebox {
+  from {top: 0px;}
+  to {top: 300px;}
 }

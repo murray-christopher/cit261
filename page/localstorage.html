@@ -24,9 +24,28 @@
 </div>
 <div class="localstorage, pagecontent">
   <h1>Local Storage</h1>
-  <h2>Arrays</h2>
-  <h2>Associative Arrays</h2>
-  <h2>Objects</h2>
+  <h2>Storing and Retrieving Simple Data</h2>
+  <p>There are multiple ways in which you can store information from the user.<br><br>
+
+  <strong>local storage</strong> - This is stored on the clients computer so the next time they
+  access your site you can tell who they are and continue where they left off.
+  However this storage is frowned upon and not very useful since most browsers
+  will block this or the user them self will. It can be very useful when dealing
+  with a lot of temporary data that is very critical. should the user lose
+  internet the client can still be saving the work of the user "offline" to
+  upload to the server when they become connected again<br><br>
+
+  <strong>Cookies & sessions</strong> - These are both encrypted files that a website can use to
+  customise your experience. Cookies are stored client side while sessions are
+  stored server-side. Usually one is used over the other not usually used together,
+  however there are very useful cases in which both can help. Cookies again are
+  tough since the user can block them from websites using them, they are more
+  secure that local storage but less than sessions.<br><br>
+
+  Example of local storage can be found <a href="jsonparse.html">here<a/>.
+  You can view the locally stored json in chrome by hitting f12 and navigating
+  to the tab called application. it will appear after you have created a local
+  variable which in my case in filling out the form and stringifying it.</p>
 </div>
 </body>
 </html>

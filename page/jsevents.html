@@ -2,8 +2,6 @@
 <head>
   <title>JS Events</title>
   <link rel="stylesheet" href="../main.css">
-  <script>
-  </script>
 </head>
 <body>
 <div id="sidebar" class="sidenav">
@@ -22,11 +20,78 @@
   <a href="dommanip.html">DOM Manipulation</a>
   <a href="jscss.html">JS Manipulate CSS</a>
 </div>
-<div class="jsevents, pagecontent">
+<div class="jsevents pagecontent">
   <h1>Javascript Events</h1>
   <h2>Animations</h2>
+  <p>Using functions we can manipulate rapidly the css or display values of
+    elements on the screen. We can add in event listeners for what stage each
+    item is at and display custom animations for each.
+
   <h2>Transitions</h2>
+  <p>This is the smoothing of css between updates. so instead of making each
+    update jerky you can smooth out the animation between them and it will blend
+    the frames between the two keyframes. so you set the keyframes and it does
+    the rest</p>
+
   <h2>Mobile</h2>
+  <p>web has built in on touch events for moblie applications viewing sites.
+    With this we can tie animaitons to them.<br/>
+    Press and Hold to grow the dot and double tap to reset.</p>
+
+  <div id="thebox"></div>
 </div>
+<script>
+var x = document.getElementById("thebox");
+
+// Standard syntax
+x.addEventListener("mouseover", startAnimation);
+x.addEventListener("dblclick", resetAnimation);
+x.addEventListener("animationend", myEndFunction);
+
+function startAnimation() {
+    this.innerHTML = "Animation has begun";
+    this.style.background = "#E27D60";
+}
+
+function resetAnimation() {
+    this.innerHTML = "Animation repeating";
+    this.style.background = "#C38D9E";
+}
+
+grow box
+
+
+// Standard syntax
+x.addEventListener("ontouchstart", touchStart);
+
+var clickTimer = null;
+
+function touchStart() {
+    var elem = document.getElementById("mobilebox");
+    if (clickTimer == null) {
+        clickTimer = setTimeout(function () {
+            clickTimer = null;
+            //longpress
+            var width = 10;
+            var id = setInterval(frame, 100);
+            function frame() {
+              if (width >= 50) {
+                clearInterval(id);
+              } else {
+                width++;
+                elem.style.width = width + '%';
+                elem.innerHTML = width * 1  + '%';
+              }
+            }
+        }, 500)
+    } else {
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        //double tap
+        elem.style.width = width;
+        elem.innerHTML = width;
+    }
+}
+</script>
 </body>
 </html>

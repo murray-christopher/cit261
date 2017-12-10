@@ -3,19 +3,18 @@
   <title>Ajax Request</title>
   <link rel="stylesheet" href="../main.css">
   <script>
-    function validate(){
-      var fileName = document.getElementById("json")
-    }
-    function jsonParse() {
+    function grabJson() {
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               var myObj = JSON.parse(this.responseText);
-              var output = myObj.name + "<br>" + myObj.username + "<br>" + myObj.age
-              document.getElementById("json").innerHTML = output;
+              var output = "Name: " + myObj.name + "<br>Username: " +
+                            myObj.username + "<br>Age: " +
+                            myObj.age
+              document.getElementById("displayfile").innerHTML = output;
           }
       };
-      xmlhttp.open("GET", fileName, true);
+      xmlhttp.open("GET", "json_demo.txt", true);
       xmlhttp.send();
     }
   </script>
@@ -39,19 +38,28 @@
   </div>
   <div class="ajax_request pagecontent">
     <h1>Ajax Requesting</h1>
-    <p>The "grab info" button will grab the json file and load it to the webpage<br/>
-      without refreashing this webpage by using ajax request to complete the task.</p>
-    <p>Please select a JSON file to Load</p>
-    <form action="#" method="get" onsubmit="return buildJson()" >
-      <input type="radio" value="class.json" name="json"> Class List<br>
-      <input type="radio" value="employees.json" name="json"> Employee List<br>
-      <input type="radio" value="orders.json" name="json"> Orders<br>
-      <input type="submit" value="Grab Info" id="submitbutton">
-    </form>
-    <br />
-    <br />
-    <p id="file title"></p>
-    <div id="json"></div>
+      <p>Ajax request are used to exchange data to and from the server with the client.
+      Since http is stateless ajax allows us to provide functionality that
+      mimicks state, allowing you to update various pages of your page without
+      having to reload the webpage. <br/></p>
+    <h2>Technical Explination of how the AJAX call works</h2>
+      <p>The ajax request is done using callbacks and
+        thats why it looks so strange this is to make the call asynchronously.
+        Basically how the call works is it calls the xhttp.open() first which holds
+        your file type and http request eg. GET, POST and asynchronous true or false.
+        Then it runs xhttp.send(). Now if we wait for the response which is where
+        the whole first part of this function comes in using a callback. When xhttp recieve that
+        state change or in other words it recieves a file status of 200 from the
+        server then we are good, if not we can handle that with another if statement
+        to display to the user but this will do for our application. We also check
+        the readystate which 4 is good. Now we now we have recieved something. We
+        access that somehthing using "this" which as a lot of different things you
+        can do with it but we are interested in just the response text from the
+        json file in which I parse and display back to you.<br/></p>
+      <p>The button below recieves a file from the server after loading this webpage
+      and displays it to the user.</p>
+    <input type="button" value="Grab File" onclick="grabJson()">
+    <div id="displayfile"></div>
   </div>
 </body>
 </html>

@@ -11,14 +11,59 @@
       document.getElementById("loops").innerHTML = text;
     }
   }
-  function conditional(){
 
-    document.getElementById("conditional").innerHTML = text;
+  function forloopreset(){
+    document.getElementById("loops").innerHTML = "";
   }
 
+  function conditional(){
+    var text = document.getElementById("conditional").value;
+    if(!text) {
+      alert("The text box is empty.");
+    }
+    else {
+      alert("you entered: " + text);
+    }
+  }
+
+  function variable(y){
+    var x = document.getElementById("variable").value;
+    if(!y == undefined){
+      alert( y + "\nis: " + y.length + " characters long.");
+    }
+    else {
+      alert( x + "\nis: " + x.length + " characters long.");
+    }
+  }
+
+  function arraydisplay(){
+    //objects since its describing something
+    var person1 = { name:"Chris", age:"24", birthday:"10-22-93"}
+    var person2 = { name:"Jared", age:"20", birthday:"01-02-97"}
+    var person3 = { name:"Ty", age:"30", birthday:"08-05-87"}
+    var person4 = { name:"Kalie", age:"26", birthday:"03-17-91"}
+
+    //array of objects since its a list of related objects.
+    var people = [];
+    people[0] = person1;
+    people[1] = person2;
+    people[2] = person3;
+    people[3] = person4;
+
+    var built = "";
+    //innerHTML is not overloaded to handle display of my objects so i have to
+    //tell it how to display my objects however i'll just build an array and
+    //display that for now
+    for(var i = 0; i < people.length; i++){
+      built += "Name: " + people[i].name + ", ";
+      built += "Age: " + people[i].age + ", ";
+      built += "Birthday: " + people[i].birthday + "<br/>";
+    }
+    document.getElementById("arrayid").innerHTML = built;
+  }
   </script>
 </head>
-<body>
+<body onload="arraydisplay()">
 <div id="sidebar" class="sidenav">
   <a href="../index.html">Home</a>
   <a href="jsonparse.html">JSONParse/Stringify</a>
@@ -37,18 +82,68 @@
 </div>
 <div class="jsbasics, pagecontent">
   <h1>Javascript Basics</h1>
+
   <h2>Loops</h2>
-  <div id="loops" onclick="forloop()"><input type="button" value="count to 10"></div>
+    <div id="loops" ></div>
+    <input type="button" value="count to 10" onclick="forloop()">
+    <input type="button" value="reset" onclick="forloopreset()">
+
   <h2>Conditionals</h2>
-  <div>Input some text or leave blank and click submit<input type="text"><input type="button" value="submit"></div>
+  <p>Input some text or leave blank and click test. Using conditionals I can
+    display custom alerts to notify you of what you entered or that you didn't
+    enter anything.</p>
+  <input type="text" id="conditional">
+  <input type="button" value="test" onclick="conditional()">
+
   <h2>Functions</h2>
-  <p>click some of the buttons below to execute the functions I have under different categories</p>
+  <p>click some of the buttons below to execute the functions I have under
+    different categories</p>
+    <input type="button" value="Execute Conditional" onclick="conditional()">
+    <input type="button" value="Execute Loop" onclick="forloop()">
+
   <h2>Variables</h2>
-  <p>With declared Varibles I can grab information from the client store it in a varible and Manipulate it.</p>
+  <p>With declared Variables I can grab information from the client store it in a
+    varible and Manipulate it. Enter text below and it will tell you how long your text input is.</p>
+    <input type="text" id="variable">
+    <input type="button" value="test" onclick="variable()">
+
   <h2>Parameters</h2>
+  <p>Parameters are variables passed through a function header. Whenever the
+    function is called you can pass it the variables it needs complete its
+    task. The button below will call our variable function and pass it the
+    parameter "test" which will give us a length of 4.</p>
+    <input type="button" value="call with test" onclick="variable(test)">
+
+  <h2>Objects</h2>
+  <p>Objects can be thought of as an a real life object and its description.
+    Such as a ball that has a shape, color, texture, and material. A Balls object would look like this:<br/><br/>
+    var ball = {<br/>
+      &emsp;shape: "Sphere",<br/>
+      &emsp;color: "red",<br/>
+      &emsp;texture: "smooth",<br/>
+      &emsp;material: "rubber"<br/>
+    };<br/><br/>
+    On the left is the property and the right is the value. With this you can
+    gather input from the user about a anything and store it as an object
+    that I can then use to customise the user experience. I cover objects
+    more in depth <a href="jsobjects.html">here</a></p>
 
   <h2>Arrays</h2>
-  <h2>Objects</h2>
+  <p>Arrays are special types of objects. The main difference is that arrays
+    do not need properties they are just a list of values. However they can
+    store a list of object type and mixed datatypes just like objects, in
+    which you can access using the dot operator or brackets to access elements.
+    The next question you might ask is what one do you use where and why.<br/><br/>
+    It comes down to good developer practices because you could get away with doing
+    either one, however if your code calls for an array where your accessing
+    positions in the object and looping through the values an array would be
+    the better practice and make more sense. If your keeping track of a lot
+    or objects that relate then an array that would be much better. More simply
+    if its a list of related values I would use and array. If your trying to
+    provide a description of something in code then use an object.<br/><br/>
+    below is a list of values displayed when the page loads</p>
+    <div id="arrayid"></div>
+
 </div>
 </body>
 </html>

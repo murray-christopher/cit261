@@ -1,5 +1,0 @@
-{
-  "name": "Chris",
-  "age": "23",
-  "username":"MethodicalMind"
-}

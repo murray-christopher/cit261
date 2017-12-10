@@ -3,9 +3,38 @@
   <title>JS Objects</title>
   <link rel="stylesheet" href="../main.css">
   <script>
+    function Person(first, last, email, birthday) {
+        this.firstName = first;
+        this.lastName = last;
+        this.email = email;
+        this.birthday = birthday;
+        this.name = function() { return this.firstName + " " + this.lastName; };
+    }
+
+    //adding a method to a prototype outside the constructor for all objects created under this prototype
+    Person.prototype.age = function() {
+      //current year - last 4 of birthday = age
+      return new Date().getFullYear() - Number(this.birthday.substr(this.birthday.length - 4))
+    };
+
+    //declare object from the prototype
+    var myself = new Person("Chris", "Murray", "nothing@nope.com", "10/22/1993");
+
+    //display object only overloaded for this object.
+    //also calls the prototypes methods
+    myself.display = function() {
+      return "Name: " + this.name() + "<br>Email: " + this.email +
+             "<br>Age: " + this.age();
+    }
+
+    //display object on load.
+    function display(){
+      document.getElementById("objectdisplay").innerHTML = myself.display();
+    }
+
   </script>
 </head>
-<body>
+<body onload="display()">
 <div id="sidebar" class="sidenav">
   <a href="../index.html">Home</a>
   <a href="jsonparse.html">JSONParse/Stringify</a>
@@ -24,11 +53,54 @@
 </div>
 <div class="jsobjects, pagecontent">
   <h1>Javascript Objects</h1>
-  <h2>Object Creation</h2>
-  <h2>Inheritance</h2>
+  <h2>Object Creation & Instantion</h2>
+  <p>Objects can be thought of as an a real life object and its description.
+    Such as a ball that has a shape, color, texture, and material. A Balls object would look like this:<br/><br/>
+    var ball = {<br/>
+      &emsp;shape: "Sphere",<br/>
+      &emsp;color: "red",<br/>
+      &emsp;texture: "smooth",<br/>
+      &emsp;material: "rubber"<br/>
+    };<br/><br/>
+    On the left is the property and the right is the value. With this you can
+    gather input from the user about a anything and store it as an object
+    that I can then use to customise the user experience. Another Form of this
+    is to make a funtion with parameter and call the function and pass in the
+    parameters which can save time if your making a lot of these objects and be
+    cleaner.</p>
+
   <h2>Properties</h2>
+  <p>Properties of a object are the key words that define the value. Since objects
+    describe something we use keywords as the desciptions. Which this was can
+    have metadata for values. Giving values identifiers can make things really
+    easy for other to integrate with your code.</p>
+
   <h2>Methods</h2>
-  <h2>Instantion</h2>
+  <p>These are functions that are specific to an object. For instance you have
+    in your object first name and last name but in your code you want to display
+    thier full name often. Rather than typing out allthe syntax and conjuctions
+    we can make a method that return that value and call the method name. So the
+    call would be object.name instead of "object.firstname + ' ' + object.lastname"
+    which is a lot shorter especially if you need the middle name too.</p>
+
+  <h2>Inheritance</h2>
+  <p>Inheritence in javascript is different than compiled languages. It is
+    refered to as prototyping. Javascript has a predefined library for different
+    objects which are at the top of the food chain of objects. One of those is
+    the default object which is where custom objects inherit from. </p>
+  <p>To create/start your our custom library of objects known as prototypes you
+    must first create an object constructor or temple in which the other objects
+    will be made after.</p>
+  <p>This might just seem like a lot of extra work to make objects but the benefit
+    to prototyping is methods for objects of a certian type. for instance you
+    can create the ovedrloaded display function for your object in which later
+    in your code you then just call object.display and it will display your object
+    correctly and you won't have to write in a lot of different places. You can
+    also write your own merge function between objects and copy and all sorts of
+    extra functionality to your objects making it easier to work with and read.</p>
+
+    <h2>Custom object & methods</h2>
+    <div id="objectdisplay"></div>
 </div>
 </body>
 </html>

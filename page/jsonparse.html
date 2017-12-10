@@ -3,17 +3,38 @@
   <title>JS Parse</title>
   <link rel="stylesheet" href="../main.css">
   <script>
-    function buildJson(){
-      user = document.getElementById('u1').value
-      password = document.getElementById('p1').value
-      if(user == "" || password == ""){
-        alert("please fill in all fields")
-        return false;
+    function stringifyform(){
+      var u1 = document.getElementById("username").value;
+      var p1 = document.getElementById("pass").value;
+
+      if(u1 == "") {
+        alert("username cannot be left blank");
+        u1.focus;
+        return;
       }
-      var myObj = { "user":user, "password": password};
-      var myJSON = JSON.stringify(myObj);
-      window.location = "?" + myJSON;
-      jsonParse()
+      if(p1 == "") {
+        alert("password cannot be left blank");
+        p1.focus;
+        return;
+      }
+      //create object
+      var creds = {username:u1, password:p1}
+      var myJson = JSON.stringify(creds);
+      localStorage.setItem("UserCreds", myJson);
+    }
+
+    function parseFile(){
+      //create object
+      var file = localStorage.getItem("UserCreds");
+      if(!file) {
+        alert("Please complete the first portion before using this. If you " +
+        "have completed it your browser might be denying the storing of the file.");
+      }
+
+      var creds = JSON.parse(file);
+      var display = "Username: " + creds.username + "<br/>Password: " + creds.password;
+      document.getElementById("parsejson").innerHTML = display;
+      localStorage.removeItem("UserCreds");
     }
   </script>
 </head>
@@ -36,8 +57,28 @@
 </div>
 <div class="jsonparse, pagecontent">
   <h1>JSON Parse and Stringify</h1>
-  <h2>Parse</h2>
+
   <h2>Stringify</h2>
+  <p>This will take any JS object and make it into a JSON datatype in which to be
+    saved and stored or sent to the server. This has many applications in which
+    you can send user information easliy to and from the server to customise the
+    user experience.<br/>
+    Fill out the form below to save it as a json file and store it locally on your machine</p>
+    <div>
+      username:
+      <input type="text" id="username"><br/>
+      password:
+      <input type="password" id="pass"><br/>
+      <input type="button" onclick="stringifyform()" value="stringify">
+    </div>
+
+  <h2>Parse</h2>
+  <p>This is a function that allows JSON datatypes being read in to be parsed into
+    an object. It will automatically take an JSON datatype and make key value pairs
+    from them.<br/>
+    Below will grab the json file you stored and display it.</p>
+    <input type="button" onclick="parseFile()" value="parse"><br/>
+    <div id="parsejson"></div>
 </div>
 </body>
 </html>

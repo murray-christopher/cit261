@@ -2,8 +2,6 @@
 <head>
   <title>JS Triggers</title>
   <link rel="stylesheet" href="../main.css">
-  <script>
-  </script>
 </head>
 <body>
 <div id="sidebar" class="sidenav">
@@ -22,11 +20,55 @@
   <a href="dommanip.html">DOM Manipulation</a>
   <a href="jscss.html">JS Manipulate CSS</a>
 </div>
-<div class="jstriggeranim, pagecontent">
+<div class="jstriggeranim pagecontent">
   <h1>Javascript Events</h1>
   <h2>Animations</h2>
+  <p>Using functions we can manipulate rapidly the css or display values of
+    elements on the screen. We can add in event listeners for what stage each
+    item is at and display custom animations for each.
+
   <h2>Transitions</h2>
-  <h2>Mobile</h2>
+  <p>This is the smoothing of css between updates. so instead of making each
+    update jerky you can smooth out the animation between them and it will blend
+    the frames between the two keyframes. so you set the keyframes and it does
+    the rest</p>
+
+  <input type="button" value="start" onclick="movebox()">
+  <div id="thebox"></div>
 </div>
+<script>
+var x = document.getElementById("thebox");
+
+// Start the animation with JavaScript
+function movebox() {
+  x.style.WebkitAnimation = "movebox 4s 2"; // Code for Chrome, Safari and Opera
+  x.style.animation = "movebox 4s 2";       // Standard syntax
+}
+
+// Code for Chrome, Safari and Opera
+x.addEventListener("webkitAnimationStart", myStartFunction);
+x.addEventListener("webkitAnimationIteration", progressUpdate);
+x.addEventListener("webkitAnimationEnd", myEndFunction);
+
+// Standard syntax
+x.addEventListener("animationstart", myStartFunction);
+x.addEventListener("animationiteration", progressUpdate);
+x.addEventListener("animationend", myEndFunction);
+
+function myStartFunction() {
+    this.innerHTML = "Animation has begun";
+    this.style.background = "#E27D60";
+}
+
+function progressUpdate() {
+    this.innerHTML = "Animation repeating";
+    this.style.background = "#C38D9E";
+}
+
+function myEndFunction() {
+    this.innerHTML = "Animation Completed";
+    this.style.background = "#41B3A3";
+}
+</script>
 </body>
 </html>

@@ -3,6 +3,24 @@
   <title>Dom Manipulation</title>
   <link rel="stylesheet" href="../main.css">
   <script>
+  function addElement(){
+    var newp = document.createElement("p");
+    var newt = document.createTextNode("new element");
+    newp.appendChild(newt);
+    document.getElementById("elements").appendChild(newp);
+  }
+  function addItem(){
+   var newItem = document.createElement("LI");
+   var textnode = document.createTextNode("Mustang");
+   newItem.appendChild(textnode);
+
+    var list = document.getElementById("myList");
+    list.insertBefore(newItem, list.childNodes[0]);
+  }
+  function removeElement(){
+      var list = document.getElementById("myList");
+      list.removeChild(list.childNodes[0]);
+  }
   </script>
 </head>
 <body>
@@ -24,10 +42,28 @@
 </div>
 <div class="dommanip pagecontent">
   <h1>Dom Manipulation</h1>
+
   <h2>Create Element</h2>
+  <p>Creates a html tag on the page</p>
+  <input type="button" value="Add Element" onclick="addElement()">
+
   <h2>Append Child</h2>
+  <p>Appends the newly create element to an exsisting tag</p>
+  <div id="elements"> "Append to me" </div>
+
   <h2>Insert Before</h2>
+  <p>Allows you to insert list items at the beginnign of the list</p>
+  <ul id="myList">
+    <li>Mustang</li>
+    <li>Camero</li>
+    <li>Challenger</li>
+  </ul>
+  <input type="button" value="Insert Before" onclick="addItem()">
+
   <h2>Remove Child</h2>
+  <p>Removes the child element from a parent element.</p>
+
+  <input type="button" value="Remove Element" onclick="removeElement()">
 </div>
 </body>
 </html>
