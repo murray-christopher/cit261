@@ -47,6 +47,7 @@ var x = document.getElementById("thebox");
 
 // Standard syntax
 x.addEventListener("dblclick", startAnimation);
+x.addEventListener("ontouchstart", startAnimation);
 
 function startAnimation() {
     this.innerHTML = "Animation has begun";
@@ -61,36 +62,6 @@ function startAnimation() {
         elem.style.width = pos + 'px';
         elem.style.height = pos + 'px';
       }
-    }
-}
-
-// Standard syntax
-x.addEventListener("ontouchstart", touchStart);
-
-var clickTimer = null;
-
-function touchStart() {
-    var elem = document.getElementById("mobilebox");
-    if (clickTimer == null) {
-        clickTimer = setTimeout(function () {
-            clickTimer = null;
-            //single tap
-        }, 500)
-    } else {
-        clearTimeout(clickTimer);
-        clickTimer = null;
-        //double tap
-        var width = 10;
-        var id = setInterval(frame, 100);
-        function frame() {
-          if (width >= 50) {
-            clearInterval(id);
-          } else {
-            width++;
-            elem.style.width = width + '%';
-            elem.innerHTML = width * 1  + '%';
-          }
-        }
     }
 }
 </script>
