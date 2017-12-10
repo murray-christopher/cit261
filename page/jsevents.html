@@ -36,7 +36,9 @@
   <h2>Mobile</h2>
   <p>web has built in on touch events for moblie applications viewing sites.
     With this we can tie animaitons to them.<br/>
-    Press and Hold to grow the dot and double tap to reset.</p>
+    double tap to animate.</p>
+
+    On desktop double click
 
   <div id="thebox"></div>
 </div>
@@ -44,22 +46,23 @@
 var x = document.getElementById("thebox");
 
 // Standard syntax
-x.addEventListener("mouseover", startAnimation);
-x.addEventListener("dblclick", resetAnimation);
-x.addEventListener("animationend", myEndFunction);
+x.addEventListener("dblclick", startAnimation);
 
 function startAnimation() {
     this.innerHTML = "Animation has begun";
-    this.style.background = "#E27D60";
+    var elem = document.getElementById("thebox");
+    var pos = 0;
+    var id = setInterval(frame, 5);
+    function frame() {
+      if (pos == 350) {
+        clearInterval(id);
+      } else {
+        pos++;
+        elem.style.width = pos + 'px';
+        elem.style.height = pos + 'px';
+      }
+    }
 }
-
-function resetAnimation() {
-    this.innerHTML = "Animation repeating";
-    this.style.background = "#C38D9E";
-}
-
-grow box
-
 
 // Standard syntax
 x.addEventListener("ontouchstart", touchStart);
@@ -71,25 +74,23 @@ function touchStart() {
     if (clickTimer == null) {
         clickTimer = setTimeout(function () {
             clickTimer = null;
-            //longpress
-            var width = 10;
-            var id = setInterval(frame, 100);
-            function frame() {
-              if (width >= 50) {
-                clearInterval(id);
-              } else {
-                width++;
-                elem.style.width = width + '%';
-                elem.innerHTML = width * 1  + '%';
-              }
-            }
+            //single tap
         }, 500)
     } else {
         clearTimeout(clickTimer);
         clickTimer = null;
         //double tap
-        elem.style.width = width;
-        elem.innerHTML = width;
+        var width = 10;
+        var id = setInterval(frame, 100);
+        function frame() {
+          if (width >= 50) {
+            clearInterval(id);
+          } else {
+            width++;
+            elem.style.width = width + '%';
+            elem.innerHTML = width * 1  + '%';
+          }
+        }
     }
 }
 </script>

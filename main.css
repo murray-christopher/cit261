@@ -27,6 +27,9 @@
     padding: 20px;
 }
 
+p {
+  width: 600px;
+}
 /*
 AJAX Request
 */
@@ -140,4 +143,18 @@ JS triggered events using css
 @keyframes movebox {
   from {top: 0px;}
   to {top: 300px;}
+}
+
+/*
+JS events using css
+*/
+
+.jsevents #thebox {
+  margin: 25px;
+  width: 550px;
+  height: 100px;
+  background: #41B3A3;
+  position: relative;
+  font-size: 40px;
+  text-align: center;
 }
