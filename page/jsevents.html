@@ -3,7 +3,7 @@
   <title>JS Events</title>
   <link rel="stylesheet" href="../main.css">
 </head>
-<body>
+<body onload="startup()">
 <div id="sidebar" class="sidenav">
   <a href="../index.html">Home</a>
   <a href="jsonparse.html">JSONParse/Stringify</a>
@@ -36,34 +36,36 @@
   <h2>Mobile</h2>
   <p>web has built in on touch events for moblie applications viewing sites.
     With this we can tie animaitons to them.<br/>
-    double tap to animate.</p>
+    tap to animate.</p>
 
-    On desktop double click
+    <p>On desktop double click</p>
 
   <div id="thebox"></div>
 </div>
 <script>
-var x = document.getElementById("thebox");
+  function startup() {
+    var x = document.getElementById("thebox");
 
-// Standard syntax
-x.addEventListener("dblclick", startAnimation);
-x.addEventListener("ontouchstart", startAnimation);
+    // Standard syntax
+    x.addEventListener("dblclick", startAnimation);
+    x.addEventListener("ontouchstart", startAnimation);
 
-function startAnimation() {
-    this.innerHTML = "Animation has begun";
-    var elem = document.getElementById("thebox");
-    var pos = 0;
-    var id = setInterval(frame, 5);
-    function frame() {
-      if (pos == 350) {
-        clearInterval(id);
-      } else {
-        pos++;
-        elem.style.width = pos + 'px';
-        elem.style.height = pos + 'px';
-      }
+    function startAnimation() {
+        this.innerHTML = "Animation has begun";
+        var elem = document.getElementById("thebox");
+        var pos = 0;
+        var id = setInterval(frame, 5);
+        function frame() {
+          if (pos == 350) {
+            clearInterval(id);
+          } else {
+            pos++;
+            elem.style.width = pos + 'px';
+            elem.style.height = pos + 'px';
+          }
+        }
     }
-}
+  }
 </script>
 </body>
 </html>
